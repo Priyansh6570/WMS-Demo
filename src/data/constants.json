@@ -1,0 +1,143 @@
+{
+  "roles": {
+    "super_admin": {
+      "label": "Super Admin",
+      "permissions": ["all"],
+      "dashboardRoute": "/WMS/dashboard",
+      "color": "bg-red-100 text-red-800"
+    },
+    "admin": {
+      "label": "Admin", 
+      "permissions": ["project_management", "user_management", "final_approval"],
+      "dashboardRoute": "/WMS/dashboard",
+      "color": "bg-blue-100 text-blue-800"
+    },
+    "quality_manager": {
+      "label": "Quality Manager",
+      "permissions": ["milestone_review", "quality_assessment"],
+      "dashboardRoute": "/WMS/dashboard",
+      "color": "bg-green-100 text-green-800"
+    },
+    "financial_officer": {
+      "label": "Financial Officer",
+      "permissions": ["payment_processing", "bill_verification"],
+      "dashboardRoute": "/WMS/dashboard",
+      "color": "bg-yellow-100 text-yellow-800"
+    },
+    "contractor": {
+      "label": "Contractor",
+      "permissions": ["project_execution", "team_management"],
+      "dashboardRoute": "/WMS/dashboard",
+      "color": "bg-purple-100 text-purple-800"
+    },
+    "worker": {
+      "label": "Worker",
+      "permissions": ["documentation", "progress_update"],
+      "dashboardRoute": "/WMS/dashboard",
+      "color": "bg-gray-100 text-gray-800"
+    }
+  },
+  "projectStatus": {
+    "planning": {
+      "label": "Planning",
+      "color": "bg-gray-100 text-gray-800"
+    },
+    "active": {
+      "label": "Active",
+      "color": "bg-green-100 text-green-800"
+    },
+    "on_hold": {
+      "label": "On Hold",
+      "color": "bg-yellow-100 text-yellow-800"
+    },
+    "completed": {
+      "label": "Completed",
+      "color": "bg-blue-100 text-blue-800"
+    },
+    "cancelled": {
+      "label": "Cancelled",
+      "color": "bg-red-100 text-red-800"
+    }
+  },
+  "milestoneStatus": {
+    "pending": {
+      "label": "Pending",
+      "color": "bg-gray-100 text-gray-800"
+    },
+    "in_progress": {
+      "label": "In Progress",
+      "color": "bg-yellow-100 text-yellow-800"
+    },
+    "under_review": {
+      "label": "Under Review",
+      "color": "bg-orange-100 text-orange-800"
+    },
+    "approved": {
+      "label": "Approved",
+      "color": "bg-green-100 text-green-800"
+    },
+    "rejected": {
+      "label": "Rejected",
+      "color": "bg-red-100 text-red-800"
+    },
+    "completed": {
+      "label": "Completed",
+      "color": "bg-blue-100 text-blue-800"
+    }
+  },
+  "documentCategories": {
+    "legal": "Legal Documents",
+    "technical": "Technical Documents", 
+    "financial": "Financial Documents",
+    "progress_photo": "Progress Photos",
+    "inspection_report": "Inspection Reports",
+    "quality_certificate": "Quality Certificates"
+  },
+  "issueTypes": {
+    "change_request": "Change Request",
+    "emergency": "Emergency",
+    "technical_issue": "Technical Issue", 
+    "resource_constraint": "Resource Constraint",
+    "weather_delay": "Weather Delay"
+  },
+  "priority": {
+    "low": {
+      "label": "Low",
+      "color": "bg-gray-100 text-gray-800"
+    },
+    "medium": {
+      "label": "Medium", 
+      "color": "bg-yellow-100 text-yellow-800"
+    },
+    "high": {
+      "label": "High",
+      "color": "bg-orange-100 text-orange-800"
+    },
+    "critical": {
+      "label": "Critical",
+      "color": "bg-red-100 text-red-800"
+    }
+  },
+  "monumentConditions": {
+    "excellent": {
+      "label": "Excellent",
+      "color": "bg-green-100 text-green-800"
+    },
+    "good": {
+      "label": "Good", 
+      "color": "bg-blue-100 text-blue-800"
+    },
+    "fair": {
+      "label": "Fair",
+      "color": "bg-yellow-100 text-yellow-800"
+    },
+    "poor": {
+      "label": "Poor",
+      "color": "bg-orange-100 text-orange-800"
+    },
+    "critical": {
+      "label": "Critical",
+      "color": "bg-red-100 text-red-800"
+    }
+  }
+}
