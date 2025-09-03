@@ -16,7 +16,7 @@
     {
       "id": "user_002",
       "name": "Priya Verma",
-      "mobile": "9876543211", 
+      "mobile": "9876543211",
       "role": "admin",
       "otp": "123456",
       "createdAt": "2025-01-02T10:00:00Z",
@@ -24,7 +24,8 @@
       "isActive": true,
       "profileImage": "/images/avatars/default-avatar.png",
       "projects": [],
-      "lastLogin": "2025-02-19T14:30:00Z"
+      "lastLogin": "2025-09-02T08:20:59.295Z",
+      "updatedAt": "2025-09-02T08:20:59.425Z"
     },
     {
       "id": "user_003",
@@ -36,17 +37,20 @@
       "createdBy": "user_002",
       "isActive": true,
       "profileImage": "/images/avatars/default-avatar.png",
-      "projects": ["project_001"],
+      "projects": [
+        "project_001"
+      ],
       "companyName": "Heritage Restoration Pvt Ltd",
       "licenseNumber": "MP-CONTR-2024-001",
-      "lastLogin": "2025-02-20T08:15:00Z"
+      "lastLogin": "2025-09-02T08:22:58.857Z",
+      "updatedAt": "2025-09-02T08:22:58.934Z"
     },
     {
       "id": "user_004",
       "name": "Suresh Patel",
       "mobile": "9876543213",
       "role": "quality_manager",
-      "otp": "123456", 
+      "otp": "123456",
       "createdAt": "2025-01-04T10:00:00Z",
       "createdBy": "user_002",
       "isActive": true,
@@ -60,12 +64,120 @@
       "mobile": "9876543214",
       "role": "financial_officer",
       "otp": "123456",
-      "createdAt": "2025-01-05T10:00:00Z", 
+      "createdAt": "2025-01-05T10:00:00Z",
       "createdBy": "user_001",
       "isActive": true,
       "profileImage": "/images/avatars/default-avatar.png",
       "projects": [],
       "lastLogin": "2025-02-19T11:20:00Z"
+    },
+    {
+      "name": "Priyansh Mishra",
+      "mobile": "9755326570",
+      "role": "super_admin",
+      "createdBy": "user_001",
+      "id": "user_1756799945619_iveg14dpo",
+      "createdAt": "2025-09-02T07:59:05.619Z",
+      "otp": "123456",
+      "isActive": true,
+      "profileImage": "/images/avatars/default-avatar.png",
+      "updatedAt": "2025-09-03T07:37:55.017Z",
+      "lastLogin": "2025-09-03T07:37:54.521Z"
+    },
+    {
+      "name": "varun mehta",
+      "mobile": "9755326571",
+      "role": "quality_manager",
+      "createdBy": "user_002",
+      "id": "user_1756801306446_fnn26nvr8",
+      "createdAt": "2025-09-02T08:21:46.447Z",
+      "otp": "123456",
+      "isActive": true,
+      "profileImage": "/images/avatars/default-avatar.png",
+      "lastLogin": "2025-09-02T08:21:56.986Z",
+      "updatedAt": "2025-09-02T08:21:57.097Z"
+    },
+    {
+      "name": "Worker 1",
+      "mobile": "9755326572",
+      "role": "worker",
+      "createdBy": "user_003",
+      "id": "user_1756801403361_bnerbxdkn",
+      "createdAt": "2025-09-02T08:23:23.361Z",
+      "otp": "123456",
+      "isActive": true,
+      "profileImage": "/images/avatars/default-avatar.png",
+      "lastLogin": "2025-09-02T08:23:33.664Z",
+      "updatedAt": "2025-09-02T08:23:33.722Z"
+    },
+    {
+      "name": "kamal",
+      "mobile": "9755326577",
+      "role": "contractor",
+      "createdBy": "user_1756799945619_iveg14dpo",
+      "id": "user_1756843117007_xyvs396jr",
+      "createdAt": "2025-09-02T19:58:37.007Z",
+      "otp": "123456",
+      "isActive": true,
+      "profileImage": "/images/avatars/default-avatar.png"
+    },
+    {
+      "name": "raj hans ",
+      "mobile": "9755326578",
+      "role": "contractor",
+      "createdBy": "user_1756799945619_iveg14dpo",
+      "id": "user_1756877309175_2i0a2ratr",
+      "createdAt": "2025-09-03T05:28:29.175Z",
+      "otp": "123456",
+      "isActive": true,
+      "profileImage": "/images/avatars/default-avatar.png",
+      "lastLogin": "2025-09-03T06:58:27.349Z",
+      "updatedAt": "2025-09-03T06:58:27.441Z"
+    },
+    {
+      "name": "manoj shah",
+      "mobile": "9999999999",
+      "role": "worker",
+      "createdBy": "user_1756877309175_2i0a2ratr",
+      "id": "user_1756883745155_b5hw305ly",
+      "createdAt": "2025-09-03T07:15:45.155Z",
+      "otp": "123456",
+      "isActive": true,
+      "profileImage": "/images/avatars/default-avatar.png",
+      "projects": [
+        "project_1756877333902_gplcqeyxu"
+      ],
+      "updatedAt": "2025-09-03T07:24:30.191Z"
+    },
+    {
+      "name": "tarun garg",
+      "mobile": "8888888888",
+      "role": "worker",
+      "createdBy": "user_1756877309175_2i0a2ratr",
+      "id": "user_1756883763847_sgg2etgvt",
+      "createdAt": "2025-09-03T07:16:03.847Z",
+      "otp": "123456",
+      "isActive": true,
+      "profileImage": "/images/avatars/default-avatar.png",
+      "projects": [
+        "project_1756877333902_gplcqeyxu"
+      ],
+      "updatedAt": "2025-09-03T07:27:34.849Z"
+    },
+    {
+      "name": "tanmay shri",
+      "mobile": "7777777777",
+      "role": "worker",
+      "createdBy": "user_1756877309175_2i0a2ratr",
+      "id": "user_1756884447471_f281nq168",
+      "createdAt": "2025-09-03T07:27:27.471Z",
+      "otp": "123456",
+      "isActive": true,
+      "profileImage": "/images/avatars/default-avatar.png",
+      "projects": [
+        "project_1756877333902_gplcqeyxu"
+      ],
+      "updatedAt": "2025-09-03T07:27:34.682Z"
     }
   ]
 }

@@ -1,1 +1,72 @@
-[]
+{
+  "monuments": [
+    {
+      "name": "ratan fort",
+      "description": "ratan for was built in 400bc",
+      "location": {
+        "text": "ratan pura, madhyapradehs, 456346"
+      },
+      "currentStatus": {
+        "condition": "good"
+      },
+      "geoFenceRadius": 510,
+      "photos": [
+        "/images/monuments/1756807124904-Minimalist_wallpaper.jpg"
+      ],
+      "id": "monument_1756807131837_bh7alv8qj",
+      "createdAt": "2025-09-02T09:58:51.837Z",
+      "updatedAt": "2025-09-02T19:38:29.961Z"
+    },
+    {
+      "name": "ambar kila",
+      "description": "this kila is very old and in good condition",
+      "location": {
+        "text": "bhojpal road, newar bust stand, MP 434563"
+      },
+      "currentStatus": {
+        "condition": "good"
+      },
+      "geoFenceRadius": 490,
+      "photos": [
+        "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
+        "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg",
+        "/images/monuments/1756877792899-f85aa11b3333d401136bc870e883c112.jpg"
+      ],
+      "id": "monument_1756807261505_09r4iqyyv",
+      "createdAt": "2025-09-02T10:01:01.505Z",
+      "editHistory": [
+        {
+          "id": "edit_1756877799350_zge9t2zdf",
+          "editedAt": "2025-09-03T05:36:39.350Z",
+          "editedBy": "Priyansh Mishra",
+          "userId": "user_1756799945619_iveg14dpo",
+          "changes": [
+            {
+              "field": "currentStatus.condition",
+              "oldValue": "fair",
+              "newValue": "good"
+            },
+            {
+              "field": "geoFenceRadius",
+              "oldValue": 489,
+              "newValue": 490
+            },
+            {
+              "field": "photos",
+              "oldValue": [
+                "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
+                "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg"
+              ],
+              "newValue": [
+                "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
+                "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg",
+                "/images/monuments/1756877792899-f85aa11b3333d401136bc870e883c112.jpg"
+              ]
+            }
+          ]
+        }
+      ],
+      "updatedAt": "2025-09-03T05:36:39.378Z"
+    }
+  ]
+}

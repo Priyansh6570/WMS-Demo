@@ -38,6 +38,7 @@ export const getNavigationItems = (role) => {
       { name: 'Projects', href: '/WMS/projects', icon: 'FolderOpen' }
     ],
     contractor: [
+      { name: 'Users', href: '/WMS/users', icon: 'Users' },
       { name: 'Projects', href: '/WMS/projects', icon: 'FolderOpen' }
     ],
     worker: [

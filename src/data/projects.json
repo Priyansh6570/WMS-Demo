@@ -1,1 +1,74 @@
-[]
+{
+  "projects": [
+    {
+      "monumentId": "monument_1756807261505_09r4iqyyv",
+      "name": "New Toilet",
+      "description": "New project to construct toilets in ground floor for tourists",
+      "budget": 1000000,
+      "timeline": {
+        "start": "2025-09-01",
+        "end": "2025-09-03"
+      },
+      "contractorId": "user_003",
+      "contractorName": "Amit Kumar",
+      "status": "completed",
+      "documents": [
+        {
+          "name": "work document",
+          "path": "/images/documents/1756874558875-Ecell_Oist_Tech_Lead.pdf"
+        },
+        {
+          "name": "budget sheet",
+          "path": "/images/documents/1756874558868-Cypher_30_Certificate.pdf"
+        }
+      ],
+      "id": "project_1756874559581_9num3yv80",
+      "createdAt": "2025-09-03T04:42:39.581Z"
+    },
+    {
+      "monumentId": "monument_1756807261505_09r4iqyyv",
+      "name": "south wall restoration",
+      "description": "restoration of south wall | किले की दक्षिणी दीवार का जीर्णोद्धार",
+      "budget": 800000,
+      "timeline": {
+        "start": "2025-09-09",
+        "end": "2025-11-28",
+        "expectedDuration": 3
+      },
+      "contractorId": "user_1756877309175_2i0a2ratr",
+      "contractorName": "raj hans ",
+      "status": "scheduled",
+      "priority": "high",
+      "documents": [
+        {
+          "name": "project details",
+          "path": "/images/documents/1756877333345-Cypher_30_Certificate.pdf"
+        }
+      ],
+      "milestones": [],
+      "progress": 0,
+      "id": "project_1756877333902_gplcqeyxu",
+      "createdAt": "2025-09-03T05:28:53.902Z",
+      "actualStartDate": "2025-09-03T05:30:38.750Z",
+      "pausedAt": "2025-09-03T05:29:37.866Z",
+      "workers": [
+        {
+          "id": "user_1756884447471_f281nq168",
+          "name": "tanmay shri",
+          "mobile": "7777777777"
+        },
+        {
+          "id": "user_1756883745155_b5hw305ly",
+          "name": "manoj shah",
+          "mobile": "9999999999"
+        },
+        {
+          "id": "user_1756883763847_sgg2etgvt",
+          "name": "tarun garg",
+          "mobile": "8888888888"
+        }
+      ],
+      "updatedAt": "2025-09-03T07:27:34.119Z"
+    }
+  ]
+}

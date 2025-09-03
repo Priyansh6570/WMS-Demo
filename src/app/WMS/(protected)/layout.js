@@ -12,18 +12,15 @@ export default function ProtectedLayout({ children }) {
   const router = useRouter()
 
   useEffect(() => {
-    // If auth is not loading and the user is not authenticated, redirect to login.
     if (!loading && !isAuthenticated()) {
       router.push('/WMS/login')
     }
   }, [loading, isAuthenticated, router])
 
-  // While loading or if not authenticated, show the loading screen.
   if (loading || !isAuthenticated()) {
     return <Loading />
   }
 
-  // Once authenticated, show the dashboard layout with the page content.
   return (
     <div className="flex h-screen bg-gray-100">
       <Sidebar user={user} />

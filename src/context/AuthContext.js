@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { dataManager } from '@/lib/data-manager'
 import { DEMO_OTP } from '@/lib/constants'
 
@@ -11,12 +11,13 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Check if user is logged in on app start
+    // On initial load, check if a user session exists in local storage
     const currentUser = localStorage.getItem('currentUser')
     if (currentUser) {
       try {
         setUser(JSON.parse(currentUser))
       } catch (error) {
+        // If stored data is corrupt, clear it
         localStorage.removeItem('currentUser')
       }
     }
@@ -25,70 +26,58 @@ export function AuthProvider({ children }) {
 
   const login = async (mobile, otp) => {
     try {
-      // Find user by mobile number
-      const users = dataManager.getAll('users')
+      // 1. Fetch the up-to-date user list from the API backend
+      const users = await dataManager.getUsers();
+      
+      // 2. Find the user in the fetched data
       const foundUser = users.find(u => u.mobile === mobile && u.isActive)
       
       if (!foundUser) {
         throw new Error('User not found or inactive')
       }
       
-      // Verify OTP (in demo, we use DEMO_OTP for all users)
+      // 3. Verify the demo OTP
       if (otp !== DEMO_OTP) {
         throw new Error('Invalid OTP')
       }
       
-      // Update user's last login
-      dataManager.update('users', foundUser.id, {
+      // 4. Update the user's last login time via the API
+      // This makes the change persistent in your users.json file
+      const updatedUser = await dataManager.updateUser(foundUser.id, {
         lastLogin: new Date().toISOString()
-      })
+      });
       
-      // Store user in localStorage and state
-      localStorage.setItem('currentUser', JSON.stringify(foundUser))
-      setUser(foundUser)
+      // 5. Store the complete, updated user object in localStorage and state
+      localStorage.setItem('currentUser', JSON.stringify(updatedUser))
+      setUser(updatedUser)
       
-      return { success: true, user: foundUser }
+      return { success: true, user: updatedUser }
     } catch (error) {
+      console.error("Login failed:", error);
       return { success: false, error: error.message }
     }
   }
 
-  const logout = () => {
+  const logout = useCallback(() => {
     localStorage.removeItem('currentUser')
     setUser(null)
-  }
+  }, []);
 
-  const isAuthenticated = () => {
-    return !!user
-  }
-
-  const hasRole = (role) => {
-    return user?.role === role
-  }
-
-  const hasPermission = (permission) => {
-    if (!user) return false
-    if (user.role === 'super_admin') return true
-    
-    const rolePermissions = {
-      admin: ['project_management', 'user_management', 'final_approval'],
-      quality_manager: ['milestone_review', 'quality_assessment'], 
-      financial_officer: ['payment_processing', 'bill_verification'],
-      contractor: ['project_execution', 'team_management'],
-      worker: ['documentation', 'progress_update']
+  const isAuthenticated = useCallback(() => {
+    // This robust check ensures authentication status is always correct
+    if (user) return true;
+    if (typeof window !== 'undefined') {
+      return !!localStorage.getItem('currentUser');
     }
-    
-    return rolePermissions[user.role]?.includes(permission) || false
-  }
+    return false;
+  }, [user]);
 
   const value = {
     user,
+    loading,
     login,
     logout,
     isAuthenticated,
-    hasRole,
-    hasPermission,
-    loading
   }
 
   return (
