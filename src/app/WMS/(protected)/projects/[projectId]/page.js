@@ -114,10 +114,12 @@ export default function ProjectDetailPage() {
             <div className="flex flex-shrink-0 ml-4 space-x-3">
               {canEdit && (
                 <>
-                  <Button variant="outline" className="border-gray-300 hover:bg-gray-50 hover:text-gray-800">
+                  <Link href={`/WMS/projects/${projectId}/edit`} passHref>
+                    <Button variant="outline" className="border-gray-300 hover:bg-gray-50 hover:text-gray-800">
                     <Edit className="w-4 h-4 mr-2" /> 
                     Edit Project
                   </Button>
+                </Link>
                   
                   {/* Add/Update Milestones Button */}
                   <Button className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800">
