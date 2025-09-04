@@ -1,5 +1,6 @@
 import { getRoleInfo } from '@/lib/constants'
 import { User, Phone, Building } from 'lucide-react'
+import Image from 'next/image'
 
 export default function UserDetailCard({ user }) {
   const roleInfo = getRoleInfo(user.role)
@@ -7,7 +8,14 @@ export default function UserDetailCard({ user }) {
   return (
     <div className="p-6 text-gray-700 card">
         <div className="flex items-start space-x-4">
-            <img src={user.profileImage} alt={user.name} className="w-16 h-16 border rounded-full" />
+            <Image
+  src={user.profileImage}
+  alt={user.name}
+  width={64}   // w-16 → 16 × 4 = 64px
+  height={64}  // h-16 → 16 × 4 = 64px
+  className="border rounded-full"
+/>
+
             <div>
                 <h1 className="text-2xl font-bold text-gray-900">{user.name}</h1>
                 <span className={`status-badge mt-1 ${roleInfo.color}`}>{roleInfo.label}</span>

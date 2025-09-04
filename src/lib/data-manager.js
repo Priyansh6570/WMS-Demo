@@ -85,4 +85,57 @@ export const dataManager = {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updates),
     }),
+
+  // --- Milestones API ---
+  getMilestoneById: async (projectId, milestoneId) => {
+    const project = await apiRequest(`/api/projects/${projectId}`);
+    if (!project || !project.milestones) {
+      throw new Error("Project or milestones not found");
+    }
+    const milestone = project.milestones.find((m) => m.id === milestoneId);
+    if (!milestone) {
+      throw new Error("Milestone not found");
+    }
+    return { ...milestone, projectName: project.name, monumentId: project.monumentId };
+  },
+  startMilestone: (projectId, milestoneId, userName) =>
+    apiRequest(`/api/projects/${projectId}/milestones/${milestoneId}/start`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userName }),
+    }),
+
+  submitMilestoneForInspection: (projectId, milestoneId, userName) =>
+    apiRequest(`/api/projects/${projectId}/milestones/${milestoneId}/submit-inspection`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userName }),
+    }),
+
+    addInspectionRecord: (projectId, milestoneId, inspectionData) =>
+    apiRequest(`/api/projects/${projectId}/milestones/${milestoneId}/add-inspection`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(inspectionData),
+    }),
+
+  forwardInspectionToAdmin: (projectId, milestoneId, userName) =>
+    apiRequest(`/api/projects/${projectId}/milestones/${milestoneId}/forward-inspection`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userName }),
+    }),
+
+  approveMilestoneInspection: (projectId, milestoneId, userName) =>
+    apiRequest(`/api/projects/${projectId}/milestones/${milestoneId}/approve-inspection`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userName }),
+    }),
+    addBillRecord: (projectId, milestoneId, billData) =>
+    apiRequest(`/api/projects/${projectId}/milestones/${milestoneId}/add-bill`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(billData),
+    }),
 };

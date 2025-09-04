@@ -515,3 +515,102 @@ body {
     background: rgb(148 163 184);
   }
 }
+
+
+.layout-wrapper.landing {
+  background-image: url('/images/page-bg.jpg');
+  background-color: transparent;
+  background-attachment: fixed;
+}
+h1,h2,h3,h4,h5,h6 {
+  color: #500808 !important;
+}
+p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #222222;
+}
+
+/* Header Styles */
+.navbar-landing {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.bg-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.3);
+}
+
+/* Content & Card Styles */
+.content-paper-bg {
+  background-image: url('/images/content-paper-bg.png');
+  background-size: 100% 100%;
+  padding: 4rem 2rem;
+  margin-top: 1rem;
+}
+
+.card-content, .card-slide {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.card-content:before, .card-slide:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .8), transparent);
+    z-index: 1;
+}
+
+.card-overlay-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 1.5rem;
+    z-index: 2;
+}
+.card-overlay-text h2, .card-overlay-text h3 {
+    color: #fff !important;
+}
+.bg-golden.btn {
+    background-color: #e2b13c;
+    color: #500808;
+    font-weight: bold;
+}
+
+/* Footer Styles */
+.footer-list li a {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 5px 0;
+    display: block;
+}
+.footer-list li a:hover {
+    color: #fff;
+}
+.social-icon {
+    color: #adb5bd;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.2s;
+}
+.social-icon:hover {
+    color: #fff;
+}
+.copy-rights {
+  color: #fff;
+  font-size: 15px;
+  line-height: 20px;
+}

@@ -27,7 +27,7 @@
     },
     {
       "monumentId": "monument_1756807261505_09r4iqyyv",
-      "name": "south wall restoration",
+      "name": "south wall restoration work",
       "description": "restoration of south wall | किले की दक्षिणी दीवार का जीर्णोद्धार",
       "budget": 700000,
       "timeline": {
@@ -45,7 +45,96 @@
           "path": "/images/documents/1756877333345-Cypher_30_Certificate.pdf"
         }
       ],
-      "milestones": [],
+      "milestones": [
+        {
+          "name": "First Milestone",
+          "description": "this is first milestone and this is its description.",
+          "budget": 98000,
+          "timeline": {
+            "start": "2025-09-01",
+            "end": "2025-09-03"
+          },
+          "clearanceChecklist": [
+            {
+              "id": "item_1756898378626",
+              "text": "add during pictures",
+              "completed": false
+            },
+            {
+              "id": "item_1756898388598",
+              "text": "add final pictures",
+              "completed": false
+            },
+            {
+              "id": "item_1756898402533",
+              "text": "attach and necessarry documents",
+              "completed": false
+            },
+            {
+              "id": "item_1756950623763",
+              "text": "bills",
+              "completed": false
+            }
+          ],
+          "document": {
+            "name": "work order",
+            "path": "/images/documents/1756898546059-Cypher_30_Certificate.pdf"
+          },
+          "id": "milestone_1756898546329_sg9leoroj",
+          "status": "pending",
+          "createdAt": "2025-09-03T11:22:26.329Z"
+        },
+        {
+          "name": "second milestone updated",
+          "description": "second dmilestone description",
+          "budget": 40000,
+          "timeline": {
+            "start": "2025-09-02",
+            "end": "2025-09-17"
+          },
+          "clearanceChecklist": [
+            {
+              "id": "item_1756900767653",
+              "text": "pictures",
+              "completed": false
+            }
+          ],
+          "document": null,
+          "id": "milestone_1756900783797_w6gu5elrk",
+          "status": "pending",
+          "createdAt": "2025-09-03T11:59:43.797Z"
+        },
+        {
+          "id": "milestone_1756950772047_0bvwr7d5x",
+          "name": "3rd milestone",
+          "description": "description",
+          "budget": 7000,
+          "timeline": {
+            "start": "2025-09-11",
+            "end": "2025-09-15"
+          },
+          "clearanceChecklist": [
+            {
+              "id": "item_1756950744305",
+              "text": "bills",
+              "completed": false
+            },
+            {
+              "id": "item_1756950748092",
+              "text": "photos",
+              "completed": false
+            },
+            {
+              "id": "item_1756950756158",
+              "text": "documents",
+              "completed": false
+            }
+          ],
+          "document": null,
+          "status": "pending",
+          "createdAt": "2025-09-04T01:52:52.047Z"
+        }
+      ],
       "progress": 0,
       "id": "project_1756877333902_gplcqeyxu",
       "createdAt": "2025-09-03T05:28:53.902Z",
@@ -68,9 +157,22 @@
           "mobile": "8888888888"
         }
       ],
-      "updatedAt": "2025-09-03T10:45:30.109Z",
+      "updatedAt": "2025-09-04T02:39:03.058Z",
       "updatedBy": "user_1756799945619_iveg14dpo",
       "editHistory": [
+        {
+          "id": "edit_1756949402356_n4w4mfiwc",
+          "editedAt": "2025-09-04T01:30:02.356Z",
+          "editedBy": "Priyansh Mishra",
+          "userId": "user_1756799945619_iveg14dpo",
+          "changes": [
+            {
+              "field": "name",
+              "oldValue": "south wall restoration",
+              "newValue": "south wall restoration work"
+            }
+          ]
+        },
         {
           "id": "edit_1756896330004_bm8c3c0jm",
           "editedAt": "2025-09-03T10:45:30.004Z",
@@ -153,6 +255,371 @@
               "newValue": "high"
             }
           ]
+        }
+      ]
+    },
+    {
+      "monumentId": "monument_1756807131837_bh7alv8qj",
+      "name": "old project",
+      "description": "old project details",
+      "budget": 300000,
+      "timeline": {
+        "start": "2025-08-04",
+        "end": "2025-08-28"
+      },
+      "contractorId": "user_1756877309175_2i0a2ratr",
+      "contractorName": "raj hans ",
+      "status": "completed",
+      "documents": [],
+      "id": "project_1756952487700_yv1d0n3ys",
+      "createdAt": "2025-09-04T02:21:27.700Z"
+    },
+    {
+      "monumentId": "monument_1756807131837_bh7alv8qj",
+      "name": "ceiling leakage fixing work",
+      "description": "ceiling leakage fixing work to be done before rainy season.",
+      "budget": 100000,
+      "timeline": {
+        "start": "2025-09-09",
+        "end": "2025-09-16",
+        "expectedDuration": 1
+      },
+      "contractorId": "user_1756877309175_2i0a2ratr",
+      "contractorName": "raj hans ",
+      "status": "scheduled",
+      "priority": "high",
+      "documents": [
+        {
+          "name": "work order",
+          "path": "/images/documents/1756953259274-Cypher_30_Certificate.pdf"
+        }
+      ],
+      "milestones": [
+        {
+          "id": "milestone_1756953465476_b5oogzm9c",
+          "name": "ceiling leakage fixing stage 1",
+          "description": "Repair ceiling leakage in the central hall by sealing cracks, replacing damaged plaster, and applying waterproof coating. Ensure proper drainage to prevent future seepage | केंद्रीय हॉल की छत में रिसाव को ठीक करने के लिए दरारों को सील करें, क्षतिग्रस्त प्लास्टर को बदलें और जलरोधी कोटिंग लगाएँ। भविष्य में रिसाव रोकने के लिए उचित निकासी की व्यवस्था करें।",
+          "budget": 35000,
+          "timeline": {
+            "start": "2025-09-10",
+            "end": "2025-09-15"
+          },
+          "clearanceChecklist": [
+            {
+              "id": "item_1756953455997",
+              "text": "bill",
+              "completed": false
+            },
+            {
+              "id": "item_1756953460176",
+              "text": "photos",
+              "completed": false
+            }
+          ],
+          "document": {
+            "name": "document",
+            "path": "/images/documents/1756957638107-Cypher_30_Certificate.pdf"
+          },
+          "status": "completed",
+          "createdAt": "2025-09-04T02:37:45.476Z",
+          "editHistory": [
+            {
+              "id": "edit_1756969558761",
+              "editedAt": "2025-09-04T07:05:58.761Z",
+              "editedBy": "Priya Verma",
+              "changes": [
+                {
+                  "field": "Inspection",
+                  "oldValue": "Submitted for Approval",
+                  "newValue": "Approved"
+                }
+              ]
+            },
+            {
+              "id": "edit_1756969528158",
+              "editedAt": "2025-09-04T07:05:28.158Z",
+              "editedBy": "Suresh Patel",
+              "changes": [
+                {
+                  "field": "Inspection",
+                  "oldValue": "In Review",
+                  "newValue": "Forwarded to Admin"
+                }
+              ]
+            },
+            {
+              "id": "edit_1756964324830",
+              "editedAt": "2025-09-04T05:38:44.830Z",
+              "editedBy": "manoj shah",
+              "changes": [
+                {
+                  "field": "Inspection",
+                  "oldValue": "Not Submitted",
+                  "newValue": "Submitted for Inspection"
+                }
+              ]
+            },
+            {
+              "id": "edit_1756963011992",
+              "editedAt": "2025-09-04T05:16:51.992Z",
+              "editedBy": "manoj shah",
+              "changes": [
+                {
+                  "field": "Proof of Work",
+                  "oldValue": "N/A",
+                  "newValue": "New proofs were added."
+                }
+              ]
+            },
+            {
+              "id": "edit_1756962194693",
+              "editedAt": "2025-09-04T05:03:14.693Z",
+              "editedBy": "raj hans ",
+              "changes": [
+                {
+                  "field": "Proof of Work",
+                  "oldValue": "N/A",
+                  "newValue": "New proofs were added."
+                }
+              ]
+            },
+            {
+              "id": "edit_1756961938069",
+              "editedAt": "2025-09-04T04:58:58.069Z",
+              "editedBy": "raj hans ",
+              "changes": [
+                {
+                  "field": "Proof of Work",
+                  "oldValue": "N/A",
+                  "newValue": "New proofs were added."
+                }
+              ]
+            },
+            {
+              "id": "edit_1756960832385_e0hgbdyfz",
+              "editedAt": "2025-09-04T04:40:32.385Z",
+              "editedBy": "raj hans ",
+              "changes": [
+                {
+                  "field": "status",
+                  "oldValue": "pending",
+                  "newValue": "active"
+                }
+              ]
+            },
+            {
+              "id": "edit_1756959632870",
+              "editedAt": "2025-09-04T04:20:32.870Z",
+              "editedBy": "raj hans ",
+              "changes": [
+                {
+                  "field": "Proof of Work",
+                  "oldValue": "N/A",
+                  "newValue": "New proofs were added."
+                }
+              ]
+            },
+            {
+              "id": "edit_1756957735539",
+              "editedAt": "2025-09-04T03:48:55.539Z",
+              "editedBy": "Priyansh Mishra",
+              "changes": [
+                {
+                  "field": "name",
+                  "oldValue": "ceiling leakage fixing stage 0",
+                  "newValue": "ceiling leakage fixing stage 1"
+                }
+              ]
+            }
+          ],
+          "proofOfWork": {
+            "photos": {
+              "before": [
+                {
+                  "id": "photo_1756961936287",
+                  "path": "/images/monuments/1756961936274-Gemini_Generated_Image_bib3d5bib3d5bib3.jpg",
+                  "about": "photo of ceiling"
+                },
+                {
+                  "id": "photo_1756962194174",
+                  "path": "/images/monuments/1756962194162--_visual_selection.png",
+                  "about": "- visual selection.png"
+                }
+              ],
+              "during": [
+                {
+                  "id": "photo_1756963011020",
+                  "path": "/images/monuments/1756963011011-matthew-de-livera-4Gf51uY0YQE-unsplash(1).jpg",
+                  "about": "matthew-de-livera-4Gf51uY0YQE-unsplash(1).jpg"
+                }
+              ],
+              "after": []
+            },
+            "documents": [
+              {
+                "id": "doc_1756961936346",
+                "name": "Heritage Restoration Workflow Management System - visual selection(2).png",
+                "path": "/images/monuments/1756961936334-Heritage_Restoration_Workflow_Management_System_-_visual_selection(2).png"
+              },
+              {
+                "id": "doc_1756961936403",
+                "name": "wms list",
+                "path": "/images/monuments/1756961936397-WMS_Feature_List_Artifact.pdf"
+              }
+            ]
+          },
+          "actualStartDate": "2025-09-04T04:40:32.385Z",
+          "submit_for_review": "submitted",
+          "quality_manager_review": [
+            {
+              "id": "insp_1756967160472",
+              "submittedAt": "2025-09-04T06:26:00.472Z",
+              "feedback": [
+                "everything looks good",
+                "need for after photos"
+              ],
+              "documents": [
+                {
+                  "name": "inspection report",
+                  "path": "/images/monuments/1756967158803-Heritage_Restoration_Workflow_Management_System_-_visual_selection(1).png"
+                }
+              ],
+              "visitDate": "",
+              "submittedBy": "Suresh Patel"
+            },
+            {
+              "id": "insp_1756968584102",
+              "submittedAt": "2025-09-04T06:49:44.102Z",
+              "feedback": [],
+              "documents": [],
+              "visitDate": "2025-09-16",
+              "submittedBy": "Suresh Patel"
+            },
+            {
+              "id": "insp_1756968593915",
+              "submittedAt": "2025-09-04T06:49:53.915Z",
+              "feedback": [],
+              "documents": [],
+              "visitDate": "2025-09-16",
+              "submittedBy": "Suresh Patel"
+            },
+            {
+              "id": "insp_1756969172574",
+              "submittedAt": "2025-09-04T06:59:32.574Z",
+              "feedback": [],
+              "documents": [],
+              "visitDate": "2025-09-16",
+              "submittedBy": "Suresh Patel"
+            },
+            {
+              "id": "insp_1756969347587",
+              "submittedAt": "2025-09-04T07:02:27.587Z",
+              "feedback": [
+                "test feedback"
+              ],
+              "documents": [],
+              "visitDate": "",
+              "submittedBy": "Suresh Patel"
+            }
+          ],
+          "inspectionVisitDate": "",
+          "admin_review": "approved",
+          "financial_record": {
+            "billDetails": "Bill documents for 1st milestones",
+            "documents": [
+              {
+                "name": "Bills",
+                "path": "/images/monuments/1756971531950--_visual_selection.png"
+              },
+              {
+                "name": "bill 2",
+                "path": "/images/monuments/1756971531949-Heritage_Restoration_Workflow_Management_System_-_visual_selection(2).png"
+              },
+              {
+                "name": "bill 3",
+                "path": "/images/monuments/1756971531948-Cypher_30_Certificate.pdf"
+              }
+            ],
+            "submittedBy": "Kavita Singh",
+            "submittedAt": "2025-09-04T07:38:54.100Z"
+          }
+        },
+        {
+          "id": "milestone_1756957811652_68yy26d50",
+          "name": "ceiling leakage fixing stage 2",
+          "description": "Repair ceiling leakage in the central hall by sealing cracks, replacing damaged plaster, and applying waterproof coating. Ensure proper drainage to prevent future seepage",
+          "budget": 10000,
+          "timeline": {
+            "start": "2025-09-16",
+            "end": "2025-09-18"
+          },
+          "clearanceChecklist": [
+            {
+              "id": "item_1756957805368",
+              "text": "photos",
+              "completed": false
+            },
+            {
+              "id": "item_1756957808820",
+              "text": "bill",
+              "completed": false
+            }
+          ],
+          "document": null,
+          "status": "active",
+          "editHistory": [
+            {
+              "id": "edit_1756961116690_g59y5vaoo",
+              "editedAt": "2025-09-04T04:45:16.690Z",
+              "editedBy": "raj hans ",
+              "changes": [
+                {
+                  "field": "status",
+                  "oldValue": "pending",
+                  "newValue": "active"
+                }
+              ]
+            }
+          ],
+          "createdAt": "2025-09-04T03:50:11.652Z",
+          "actualStartDate": "2025-09-04T04:45:16.690Z"
+        }
+      ],
+      "progress": 0,
+      "id": "project_1756952603171_txwgef35o",
+      "createdAt": "2025-09-04T02:23:23.171Z",
+      "editHistory": [
+        {
+          "id": "edit_1756953259284_7f50q5zty",
+          "editedAt": "2025-09-04T02:34:19.284Z",
+          "editedBy": "Priyansh Mishra",
+          "userId": "user_1756799945619_iveg14dpo",
+          "changes": [
+            {
+              "field": "name",
+              "oldValue": "ceiling leakage fixing",
+              "newValue": "ceiling leakage fixing work"
+            },
+            {
+              "field": "documents",
+              "oldValue": "0 doc(s)",
+              "newValue": "1 doc(s)"
+            }
+          ]
+        }
+      ],
+      "updatedBy": "user_1756799945619_iveg14dpo",
+      "updatedAt": "2025-09-04T05:15:12.622Z",
+      "workers": [
+        {
+          "id": "user_1756883745155_b5hw305ly",
+          "name": "manoj shah",
+          "mobile": "9999999999"
+        },
+        {
+          "id": "user_1756883763847_sgg2etgvt",
+          "name": "tarun garg",
+          "mobile": "8888888888"
         }
       ]
     }

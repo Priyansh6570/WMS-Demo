@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ChevronRight, Play, Pause, Image as ImageIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 export default function ImageCarousel({ images = [], autoSlideInterval = 4000 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,7 +33,7 @@ export default function ImageCarousel({ images = [], autoSlideInterval = 4000 })
   // Handle image loading
   useEffect(() => {
     if (images.length > 0) {
-      const img = new Image();
+      const img = new window.Image();
       img.onload = () => setIsLoading(false);
       img.src = images[0];
     }
@@ -65,12 +66,16 @@ export default function ImageCarousel({ images = [], autoSlideInterval = 4000 })
         >
           {images.map((url, index) => (
             <div key={`${url}-${index}`} className="relative flex-shrink-0 w-full h-full">
-              <img 
-                src={url} 
-                className="object-cover w-full h-full"
-                alt={`Monument Image ${index + 1}`}
-                loading={index === 0 ? "eager" : "lazy"}
-              />
+              <div className="relative w-full h-full">
+  <Image 
+    src={url} 
+    alt={`Monument Image ${index + 1}`}
+    loading={index === 0 ? "eager" : "lazy"}
+    fill
+    className="object-cover"
+  />
+</div>
+
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>

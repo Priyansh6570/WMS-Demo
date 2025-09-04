@@ -17,6 +17,8 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-dropzone": "^14.3.8",
+    "react-time-picker": "^8.0.2",
+    "recharts": "^3.1.2",
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {

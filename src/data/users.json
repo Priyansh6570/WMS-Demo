@@ -2,7 +2,7 @@
   "users": [
     {
       "id": "user_001",
-      "name": "Rajesh Sharma",
+      "name": "Rajesh Sharmaa",
       "mobile": "9876543210",
       "role": "super_admin",
       "otp": "123456",
@@ -11,7 +11,8 @@
       "isActive": true,
       "profileImage": "/images/avatars/default-avatar.png",
       "projects": [],
-      "lastLogin": "2025-02-20T09:00:00Z"
+      "lastLogin": "2025-02-20T09:00:00Z",
+      "updatedAt": "2025-09-04T02:19:22.402Z"
     },
     {
       "id": "user_002",
@@ -24,8 +25,8 @@
       "isActive": true,
       "profileImage": "/images/avatars/default-avatar.png",
       "projects": [],
-      "lastLogin": "2025-09-02T08:20:59.295Z",
-      "updatedAt": "2025-09-02T08:20:59.425Z"
+      "lastLogin": "2025-09-04T07:04:45.102Z",
+      "updatedAt": "2025-09-04T07:04:47.381Z"
     },
     {
       "id": "user_003",
@@ -56,7 +57,8 @@
       "isActive": true,
       "profileImage": "/images/avatars/default-avatar.png",
       "projects": [],
-      "lastLogin": "2025-02-18T16:45:00Z"
+      "lastLogin": "2025-09-04T06:23:14.339Z",
+      "updatedAt": "2025-09-04T06:23:16.311Z"
     },
     {
       "id": "user_005",
@@ -69,7 +71,8 @@
       "isActive": true,
       "profileImage": "/images/avatars/default-avatar.png",
       "projects": [],
-      "lastLogin": "2025-02-19T11:20:00Z"
+      "lastLogin": "2025-09-04T07:32:58.817Z",
+      "updatedAt": "2025-09-04T07:32:59.560Z"
     },
     {
       "name": "Priyansh Mishra",
@@ -81,8 +84,8 @@
       "otp": "123456",
       "isActive": true,
       "profileImage": "/images/avatars/default-avatar.png",
-      "updatedAt": "2025-09-03T07:37:55.017Z",
-      "lastLogin": "2025-09-03T07:37:54.521Z"
+      "updatedAt": "2025-09-04T20:31:11.769Z",
+      "lastLogin": "2025-09-04T20:31:10.183Z"
     },
     {
       "name": "varun mehta",
@@ -131,8 +134,8 @@
       "otp": "123456",
       "isActive": true,
       "profileImage": "/images/avatars/default-avatar.png",
-      "lastLogin": "2025-09-03T06:58:27.349Z",
-      "updatedAt": "2025-09-03T06:58:27.441Z"
+      "lastLogin": "2025-09-04T05:12:19.512Z",
+      "updatedAt": "2025-09-04T05:12:19.605Z"
     },
     {
       "name": "manoj shah",
@@ -145,9 +148,11 @@
       "isActive": true,
       "profileImage": "/images/avatars/default-avatar.png",
       "projects": [
-        "project_1756877333902_gplcqeyxu"
+        "project_1756877333902_gplcqeyxu",
+        "project_1756952603171_txwgef35o"
       ],
-      "updatedAt": "2025-09-03T07:24:30.191Z"
+      "updatedAt": "2025-09-04T05:15:29.801Z",
+      "lastLogin": "2025-09-04T05:15:29.767Z"
     },
     {
       "name": "tarun garg",
@@ -178,6 +183,17 @@
         "project_1756877333902_gplcqeyxu"
       ],
       "updatedAt": "2025-09-03T07:27:34.682Z"
+    },
+    {
+      "name": "tyagi vyas",
+      "mobile": "9898989898",
+      "role": "financial_officer",
+      "createdBy": "user_1756799945619_iveg14dpo",
+      "id": "user_1756952418359_4v3q6k34x",
+      "createdAt": "2025-09-04T02:20:18.359Z",
+      "otp": "123456",
+      "isActive": true,
+      "profileImage": "/images/avatars/default-avatar.png"
     }
   ]
 }

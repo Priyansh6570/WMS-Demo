@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { MapPin } from 'lucide-react';
 import { MONUMENT_CONDITIONS } from '@/lib/constants';
+import Image from 'next/image';
 
 export default function MonumentCard({ monument }) {
   const conditionInfo = MONUMENT_CONDITIONS[monument.currentStatus?.condition] || { label: 'Unknown', color: 'bg-gray-200 text-gray-800' };
@@ -14,11 +15,15 @@ export default function MonumentCard({ monument }) {
     >
       <div className="relative">
         <div className="h-40 bg-gray-200">
-          <img 
-            src={coverImage} 
-            alt={`Image of ${monument.name}`} 
-            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-          />
+          <div className="relative w-full h-full">
+  <Image
+    src={coverImage} 
+    alt={`Image of ${monument.name}`} 
+    fill
+    className="object-cover transition-transform duration-300 group-hover:scale-105"
+  />
+</div>
+
         </div>
         {/* FIX: Use the Tailwind class directly */}
         <div className={`absolute text-xs top-2 right-2 status-badge ${conditionInfo.color}`}>

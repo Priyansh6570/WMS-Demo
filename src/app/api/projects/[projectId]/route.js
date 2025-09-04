@@ -25,7 +25,7 @@ export async function GET(request, { params }) {
   try {
     
     const { projectId } = await params;
-    console.log(`[GET /api/projects/${params.projectId}] Request received`);
+    // console.log(`[GET /api/projects/${params.projectId}] Request received`);
     const db = await readDb("projects.json");
 
     console.log(`[GET] Searching for project with ID: ${projectId}`);
@@ -57,7 +57,7 @@ export async function PUT(request, { params }) {
   try {
     
     const { projectId } = await params;
-    console.log(`[PUT /api/projects/${params.projectId}] Request received`);
+    // console.log(`[PUT /api/projects/${params.projectId}] Request received`);
     const updates = await request.json();
 
     console.log(`[PUT] Updating project ${projectId} with:`, updates);

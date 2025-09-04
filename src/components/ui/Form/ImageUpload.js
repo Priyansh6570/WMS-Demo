@@ -3,6 +3,7 @@
 import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { UploadCloud, X, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function ImageUpload({ onUploadComplete, initialFiles = [] }) {
   const [files, setFiles] = useState(initialFiles);
@@ -86,7 +87,14 @@ const removeFile = async (pathToRemove) => {
         <div className="grid grid-cols-3 gap-4 mt-4">
           {files.map((path, index) => (
             <div key={index} className="relative group">
-              <img src={path} alt={`upload preview ${index}`} className="object-cover w-full h-24 rounded-md" />
+              <Image
+  src={path}
+  alt={`upload preview ${index}`}
+  width={96}   // h-24 → 24 × 4 = 96px
+  height={96}
+  className="object-cover rounded-md"
+/>
+
               <button
                 type="button"
                 onClick={() => removeFile(path)}
