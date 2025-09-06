@@ -324,6 +324,18 @@
           "createdAt": "2025-09-04T02:37:45.476Z",
           "editHistory": [
             {
+              "id": "edit_1757071443640",
+              "editedAt": "2025-09-05T11:24:03.640Z",
+              "editedBy": "manoj shah",
+              "changes": [
+                {
+                  "field": "Proof of Work",
+                  "oldValue": "N/A",
+                  "newValue": "New proofs were added."
+                }
+              ]
+            },
+            {
               "id": "edit_1756969558761",
               "editedAt": "2025-09-04T07:05:58.761Z",
               "editedBy": "Priya Verma",
@@ -453,7 +465,18 @@
                   "about": "matthew-de-livera-4Gf51uY0YQE-unsplash(1).jpg"
                 }
               ],
-              "after": []
+              "after": [
+                {
+                  "id": "photo_1757071443633",
+                  "path": "/images/monuments/1757071443624-Htr_ddossbr.jpeg",
+                  "about": "Htr ddossbr.jpeg"
+                },
+                {
+                  "id": "photo_1757071443634",
+                  "path": "/images/monuments/1757071443627-Rell_Bull.jpeg",
+                  "about": "max"
+                }
+              ]
             },
             "documents": [
               {

@@ -49,9 +49,9 @@
         "text": "bhojpal road, newar bust stand, MP 434563"
       },
       "currentStatus": {
-        "condition": "fair"
+        "condition": "good"
       },
-      "geoFenceRadius": 510,
+      "geoFenceRadius": 520,
       "photos": [
         "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
         "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg"
@@ -59,6 +59,37 @@
       "id": "monument_1756807261505_09r4iqyyv",
       "createdAt": "2025-09-02T10:01:01.505Z",
       "editHistory": [
+        {
+          "id": "edit_1757070128486_dvawi0r7q",
+          "editedAt": "2025-09-05T11:02:08.486Z",
+          "editedBy": "Priyansh Mishra",
+          "userId": "user_1756799945619_iveg14dpo",
+          "changes": [
+            {
+              "field": "currentStatus.condition",
+              "oldValue": "excellent",
+              "newValue": "good"
+            }
+          ]
+        },
+        {
+          "id": "edit_1757069449074_ng2y12p3u",
+          "editedAt": "2025-09-05T10:50:49.074Z",
+          "editedBy": "Priyansh Mishra",
+          "userId": "user_1756799945619_iveg14dpo",
+          "changes": [
+            {
+              "field": "currentStatus.condition",
+              "oldValue": "fair",
+              "newValue": "excellent"
+            },
+            {
+              "field": "geoFenceRadius",
+              "oldValue": 510,
+              "newValue": 520
+            }
+          ]
+        },
         {
           "id": "edit_1756929759727_l1szhca3h",
           "editedAt": "2025-09-03T20:02:39.727Z",
@@ -69,202 +100,6 @@
               "field": "geoFenceRadius",
               "oldValue": 500,
               "newValue": 510
-            },
-            {
-              "field": "editHistory",
-              "oldValue": [
-                {
-                  "id": "edit_1756927557542_fbgkwi3zw",
-                  "editedAt": "2025-09-03T19:25:57.542Z",
-                  "editedBy": "Priyansh Mishra",
-                  "userId": "user_1756799945619_iveg14dpo",
-                  "changes": [
-                    {
-                      "field": "name",
-                      "oldValue": "ambar kila",
-                      "newValue": "ambar kilaa"
-                    },
-                    {
-                      "field": "currentStatus.condition",
-                      "oldValue": "good",
-                      "newValue": "fair"
-                    },
-                    {
-                      "field": "photos",
-                      "oldValue": [
-                        "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                        "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg",
-                        "/images/monuments/1756877792899-f85aa11b3333d401136bc870e883c112.jpg"
-                      ],
-                      "newValue": [
-                        "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                        "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg"
-                      ]
-                    },
-                    {
-                      "field": "editHistory",
-                      "oldValue": [
-                        {
-                          "id": "edit_1756927474754_moeco1qvj",
-                          "editedAt": "2025-09-03T19:24:34.754Z",
-                          "editedBy": "Priyansh Mishra",
-                          "userId": "user_1756799945619_iveg14dpo",
-                          "changes": [
-                            {
-                              "field": "geoFenceRadius",
-                              "oldValue": 490,
-                              "newValue": 500
-                            },
-                            {
-                              "field": "editHistory",
-                              "oldValue": [
-                                {
-                                  "id": "edit_1756877799350_zge9t2zdf",
-                                  "editedAt": "2025-09-03T05:36:39.350Z",
-                                  "editedBy": "Priyansh Mishra",
-                                  "userId": "user_1756799945619_iveg14dpo",
-                                  "changes": [
-                                    {
-                                      "field": "currentStatus.condition",
-                                      "oldValue": "fair",
-                                      "newValue": "good"
-                                    },
-                                    {
-                                      "field": "geoFenceRadius",
-                                      "oldValue": 489,
-                                      "newValue": 490
-                                    },
-                                    {
-                                      "field": "photos",
-                                      "oldValue": [
-                                        "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                                        "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg"
-                                      ],
-                                      "newValue": [
-                                        "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                                        "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg",
-                                        "/images/monuments/1756877792899-f85aa11b3333d401136bc870e883c112.jpg"
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "id": "edit_1756877799350_zge9t2zdf",
-                          "editedAt": "2025-09-03T05:36:39.350Z",
-                          "editedBy": "Priyansh Mishra",
-                          "userId": "user_1756799945619_iveg14dpo",
-                          "changes": [
-                            {
-                              "field": "currentStatus.condition",
-                              "oldValue": "fair",
-                              "newValue": "good"
-                            },
-                            {
-                              "field": "geoFenceRadius",
-                              "oldValue": 489,
-                              "newValue": 490
-                            },
-                            {
-                              "field": "photos",
-                              "oldValue": [
-                                "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                                "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg"
-                              ],
-                              "newValue": [
-                                "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                                "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg",
-                                "/images/monuments/1756877792899-f85aa11b3333d401136bc870e883c112.jpg"
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "edit_1756927474754_moeco1qvj",
-                  "editedAt": "2025-09-03T19:24:34.754Z",
-                  "editedBy": "Priyansh Mishra",
-                  "userId": "user_1756799945619_iveg14dpo",
-                  "changes": [
-                    {
-                      "field": "geoFenceRadius",
-                      "oldValue": 490,
-                      "newValue": 500
-                    },
-                    {
-                      "field": "editHistory",
-                      "oldValue": [
-                        {
-                          "id": "edit_1756877799350_zge9t2zdf",
-                          "editedAt": "2025-09-03T05:36:39.350Z",
-                          "editedBy": "Priyansh Mishra",
-                          "userId": "user_1756799945619_iveg14dpo",
-                          "changes": [
-                            {
-                              "field": "currentStatus.condition",
-                              "oldValue": "fair",
-                              "newValue": "good"
-                            },
-                            {
-                              "field": "geoFenceRadius",
-                              "oldValue": 489,
-                              "newValue": 490
-                            },
-                            {
-                              "field": "photos",
-                              "oldValue": [
-                                "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                                "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg"
-                              ],
-                              "newValue": [
-                                "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                                "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg",
-                                "/images/monuments/1756877792899-f85aa11b3333d401136bc870e883c112.jpg"
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "edit_1756877799350_zge9t2zdf",
-                  "editedAt": "2025-09-03T05:36:39.350Z",
-                  "editedBy": "Priyansh Mishra",
-                  "userId": "user_1756799945619_iveg14dpo",
-                  "changes": [
-                    {
-                      "field": "currentStatus.condition",
-                      "oldValue": "fair",
-                      "newValue": "good"
-                    },
-                    {
-                      "field": "geoFenceRadius",
-                      "oldValue": 489,
-                      "newValue": 490
-                    },
-                    {
-                      "field": "photos",
-                      "oldValue": [
-                        "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                        "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg"
-                      ],
-                      "newValue": [
-                        "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                        "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg",
-                        "/images/monuments/1756877792899-f85aa11b3333d401136bc870e883c112.jpg"
-                      ]
-                    }
-                  ]
-                }
-              ]
             }
           ]
         },
@@ -295,89 +130,6 @@
                 "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
                 "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg"
               ]
-            },
-            {
-              "field": "editHistory",
-              "oldValue": [
-                {
-                  "id": "edit_1756927474754_moeco1qvj",
-                  "editedAt": "2025-09-03T19:24:34.754Z",
-                  "editedBy": "Priyansh Mishra",
-                  "userId": "user_1756799945619_iveg14dpo",
-                  "changes": [
-                    {
-                      "field": "geoFenceRadius",
-                      "oldValue": 490,
-                      "newValue": 500
-                    },
-                    {
-                      "field": "editHistory",
-                      "oldValue": [
-                        {
-                          "id": "edit_1756877799350_zge9t2zdf",
-                          "editedAt": "2025-09-03T05:36:39.350Z",
-                          "editedBy": "Priyansh Mishra",
-                          "userId": "user_1756799945619_iveg14dpo",
-                          "changes": [
-                            {
-                              "field": "currentStatus.condition",
-                              "oldValue": "fair",
-                              "newValue": "good"
-                            },
-                            {
-                              "field": "geoFenceRadius",
-                              "oldValue": 489,
-                              "newValue": 490
-                            },
-                            {
-                              "field": "photos",
-                              "oldValue": [
-                                "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                                "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg"
-                              ],
-                              "newValue": [
-                                "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                                "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg",
-                                "/images/monuments/1756877792899-f85aa11b3333d401136bc870e883c112.jpg"
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "edit_1756877799350_zge9t2zdf",
-                  "editedAt": "2025-09-03T05:36:39.350Z",
-                  "editedBy": "Priyansh Mishra",
-                  "userId": "user_1756799945619_iveg14dpo",
-                  "changes": [
-                    {
-                      "field": "currentStatus.condition",
-                      "oldValue": "fair",
-                      "newValue": "good"
-                    },
-                    {
-                      "field": "geoFenceRadius",
-                      "oldValue": 489,
-                      "newValue": 490
-                    },
-                    {
-                      "field": "photos",
-                      "oldValue": [
-                        "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                        "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg"
-                      ],
-                      "newValue": [
-                        "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                        "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg",
-                        "/images/monuments/1756877792899-f85aa11b3333d401136bc870e883c112.jpg"
-                      ]
-                    }
-                  ]
-                }
-              ]
             }
           ]
         },
@@ -391,41 +143,6 @@
               "field": "geoFenceRadius",
               "oldValue": 490,
               "newValue": 500
-            },
-            {
-              "field": "editHistory",
-              "oldValue": [
-                {
-                  "id": "edit_1756877799350_zge9t2zdf",
-                  "editedAt": "2025-09-03T05:36:39.350Z",
-                  "editedBy": "Priyansh Mishra",
-                  "userId": "user_1756799945619_iveg14dpo",
-                  "changes": [
-                    {
-                      "field": "currentStatus.condition",
-                      "oldValue": "fair",
-                      "newValue": "good"
-                    },
-                    {
-                      "field": "geoFenceRadius",
-                      "oldValue": 489,
-                      "newValue": 490
-                    },
-                    {
-                      "field": "photos",
-                      "oldValue": [
-                        "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                        "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg"
-                      ],
-                      "newValue": [
-                        "/images/monuments/1756807254071-tomas-malik-orQBzc7Dl3U-unsplash.jpg",
-                        "/images/monuments/1756807254135-vista-wei-OiERUvVrioU-unsplash.jpg",
-                        "/images/monuments/1756877792899-f85aa11b3333d401136bc870e883c112.jpg"
-                      ]
-                    }
-                  ]
-                }
-              ]
             }
           ]
         },
@@ -460,7 +177,7 @@
           ]
         }
       ],
-      "updatedAt": "2025-09-03T20:02:39.751Z"
+      "updatedAt": "2025-09-05T11:02:08.523Z"
     }
   ]
 }

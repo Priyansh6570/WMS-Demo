@@ -26,11 +26,11 @@ export default function MonumentDetailView({ monument }) {
     <div className="grid grid-cols-1 gap-8 text-gray-700 xl:grid-cols-3">
       {/* Image Carousel - Takes up 2/3 on large screens */}
       <div className="xl:col-span-2">
-        <div className="p-6 shadow-lg bg-gradient-to-br from-gray-900 to-gray-700 rounded-2xl">
+        <div className="p-6 shadow-lg bg-gradient-to-br  rounded-2xl">
           <div className="flex items-center mb-4 space-x-3">
-            <Camera className="w-5 h-5 text-white" />
+            <Camera className="w-5 h-5 " />
             <h2 className="text-xl font-semibold text-white">Monument Gallery</h2>
-            <span className="px-3 py-1 text-sm text-white rounded-full bg-white/20">
+            <span className="px-3 py-1 text-sm  rounded-full bg-gray-100 text-gray-800">
               {monument.photos?.length || 0} photos
             </span>
           </div>

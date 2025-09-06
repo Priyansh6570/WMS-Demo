@@ -35,7 +35,12 @@ async function apiRequest(url, options = {}) {
 }
 
 export const dataManager = {
+  // --- Dashboard Stats API ---
   getDashboardStats: () => apiRequest("/api/stats"),
+  getContractorDashboardStats: (contractorId) => apiRequest(`/api/contractor?contractorId=${contractorId}`),
+  getWorkerDashboardStats: (workerId) => apiRequest(`/api/worker?workerId=${workerId}`),
+
+  // --- Users API ---
   getUsers: () => apiRequest("/api/users"),
   getUserById: (id) => apiRequest(`/api/users/${id}`),
   addUser: (userData) =>
@@ -132,7 +137,8 @@ export const dataManager = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userName }),
     }),
-    addBillRecord: (projectId, milestoneId, billData) =>
+    
+  addBillRecord: (projectId, milestoneId, billData) =>
     apiRequest(`/api/projects/${projectId}/milestones/${milestoneId}/add-bill`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

@@ -9,15 +9,12 @@ import ImageUpload from '../ui/Form/ImageUpload';
 import { MONUMENT_CONDITIONS } from '@/lib/constants';
 import { MapPin, CircleDotDashed, Info, Camera, Map, Settings } from 'lucide-react';
 
-// Helper function to deep compare objects and track changes
-const trackChanges = (oldData, newData, excludeFields = ['id', 'createdAt', 'updatedAt']) => {
+const trackChanges = (oldData, newData, excludeFields = ['id', 'createdAt', 'updatedAt', 'editHistory']) => {
   const changes = [];
   
   const compareValues = (key, oldVal, newVal, path = key) => {
-    // Skip excluded fields
     if (excludeFields.includes(key)) return;
     
-    // Handle arrays (like photos)
     if (Array.isArray(oldVal) && Array.isArray(newVal)) {
       if (JSON.stringify(oldVal) !== JSON.stringify(newVal)) {
         changes.push({
@@ -29,7 +26,6 @@ const trackChanges = (oldData, newData, excludeFields = ['id', 'createdAt', 'upd
       return;
     }
     
-    // Handle objects (like location, currentStatus)
     if (typeof oldVal === 'object' && typeof newVal === 'object' && oldVal !== null && newVal !== null) {
       Object.keys({...oldVal, ...newVal}).forEach(subKey => {
         compareValues(subKey, oldVal[subKey], newVal[subKey], `${path}.${subKey}`);
@@ -37,7 +33,6 @@ const trackChanges = (oldData, newData, excludeFields = ['id', 'createdAt', 'upd
       return;
     }
     
-    // Handle primitive values
     if (oldVal !== newVal) {
       changes.push({
         field: path,
@@ -47,7 +42,6 @@ const trackChanges = (oldData, newData, excludeFields = ['id', 'createdAt', 'upd
     }
   };
   
-  // Compare all fields
   Object.keys({...oldData, ...newData}).forEach(key => {
     compareValues(key, oldData[key], newData[key]);
   });
@@ -55,7 +49,6 @@ const trackChanges = (oldData, newData, excludeFields = ['id', 'createdAt', 'upd
   return changes;
 };
 
-// This is now a shared component for creating and editing
 export default function MonumentForm({ monument }) {
   const router = useRouter();
   const { user } = useAuth();
@@ -97,11 +90,9 @@ export default function MonumentForm({ monument }) {
         };
 
       if (isEditing) {
-        // Track changes for edit history
         const changes = trackChanges(monument, payload);
         
         if (changes.length > 0) {
-          // Add edit history entry
           const editHistoryEntry = {
             id: `edit_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
             editedAt: new Date().toISOString(),
@@ -110,7 +101,6 @@ export default function MonumentForm({ monument }) {
             changes: changes
           };
 
-          // Include edit history in the payload
           const existingHistory = monument.editHistory || [];
           payload.editHistory = [editHistoryEntry, ...existingHistory];
         }
@@ -118,7 +108,6 @@ export default function MonumentForm({ monument }) {
         const updatedMonument = await dataManager.updateMonument(monument.id, payload);
         router.push(`/WMS/monuments/${updatedMonument.id}`);
       } else {
-        // For new monuments, initialize empty edit history
         payload.editHistory = [];
         const newMonument = await dataManager.addMonument(payload);
         router.push(`/WMS/monuments/${newMonument.id}`);
@@ -132,7 +121,6 @@ export default function MonumentForm({ monument }) {
 
   return (
     <div className="max-w-6xl p-6 mx-auto text-gray-700 bg-white">
-      {/* Header */}
       <div className="mb-8">
         <h1 className="mb-2 text-3xl font-bold text-gray-900">
           {isEditing ? 'Edit Monument' : 'Create New Monument'}
@@ -143,10 +131,8 @@ export default function MonumentForm({ monument }) {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-3">
-        {/* Main Form - Left Side */}
         <div className="lg:col-span-2">
           <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Basic Information Section */}
             <div className="p-6 rounded-lg bg-gray-50">
               <div className="flex items-center gap-2 mb-4">
                 <Settings className="w-5 h-5 text-blue-600" />
@@ -181,7 +167,6 @@ export default function MonumentForm({ monument }) {
               </div>
             </div>
 
-            {/* Location & Status Section */}
             <div className="p-6 rounded-lg bg-gray-50">
               <div className="flex items-center gap-2 mb-4">
                 <MapPin className="w-5 h-5 text-blue-600" />
@@ -223,7 +208,6 @@ export default function MonumentForm({ monument }) {
               </div>
             </div>
 
-            {/* Photos Section */}
             <div className="p-6 rounded-lg bg-gray-50">
               <div className="flex items-center gap-2 mb-4">
                 <Camera className="w-5 h-5 text-blue-600" />
@@ -232,7 +216,6 @@ export default function MonumentForm({ monument }) {
               <ImageUpload onUploadComplete={handlePhotoUpload} initialFiles={formData.photos} />
             </div>
 
-            {/* Geofencing Section */}
             <div className="p-6 rounded-lg bg-gray-50">
               <div className="flex items-center gap-2 mb-4">
                 <CircleDotDashed className="w-5 h-5 text-blue-600" />
@@ -260,14 +243,12 @@ export default function MonumentForm({ monument }) {
               </div>
             </div>
 
-            {/* Error Message */}
             {error && (
               <div className="p-4 border border-red-200 rounded-lg bg-red-50">
                 <p className="font-medium text-red-700">{error}</p>
               </div>
             )}
 
-            {/* Form Actions */}
             <div className="flex justify-end gap-4 pt-6 border-t">
               <Button 
                 type="button" 
@@ -289,18 +270,14 @@ export default function MonumentForm({ monument }) {
           </form>
         </div>
 
-        {/* Sidebar - Right Side */}
         <div className="lg:col-span-1">
-          {/* Geofencing Demo */}
           <div className="sticky p-6 bg-white border rounded-lg top-6">
             <div className="flex items-center gap-2 mb-4">
               <Map className="w-5 h-5 text-blue-600" />
               <h3 className="text-lg font-semibold text-gray-900">Geofencing Preview</h3>
             </div>
             
-            {/* Demo Map */}
             <div className="relative h-64 p-6 overflow-hidden rounded-lg bg-gradient-to-br from-green-100 to-blue-100">
-              {/* Map Grid Background */}
               <div className="absolute inset-0 opacity-20">
                 <div className="grid w-full h-full grid-cols-8 grid-rows-8">
                   {[...Array(64)].map((_, i) => (

@@ -1,8 +1,8 @@
-'use client'
-import { useState, useEffect, useCallback } from 'react';
-import { ChevronRight, Play, Pause, Image as ImageIcon } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
+"use client";
+import { useState, useEffect, useCallback } from "react";
+import { ChevronRight, Play, Pause, Image as ImageIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export default function ImageCarousel({ images = [], autoSlideInterval = 4000 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,7 +19,7 @@ export default function ImageCarousel({ images = [], autoSlideInterval = 4000 })
   };
 
   const togglePlayPause = () => {
-    setIsPlaying(prev => !prev);
+    setIsPlaying((prev) => !prev);
   };
 
   // Auto-slide functionality
@@ -60,21 +60,12 @@ export default function ImageCarousel({ images = [], autoSlideInterval = 4000 })
 
       {/* Main Image Container */}
       <div className="relative overflow-hidden h-96">
-        <div 
-          className="flex h-full transition-transform duration-700 ease-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
+        <div className="flex h-full transition-transform duration-700 ease-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
           {images.map((url, index) => (
             <div key={`${url}-${index}`} className="relative flex-shrink-0 w-full h-full">
               <div className="relative w-full h-full">
-  <Image 
-    src={url} 
-    alt={`Monument Image ${index + 1}`}
-    loading={index === 0 ? "eager" : "lazy"}
-    fill
-    className="object-cover"
-  />
-</div>
+                <Image src={url} alt={`Monument Image ${index + 1}`} loading={index === 0 ? "eager" : "lazy"} fill className="object-cover" />
+              </div>
 
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -87,11 +78,7 @@ export default function ImageCarousel({ images = [], autoSlideInterval = 4000 })
       <div className="absolute inset-0 flex items-center justify-between p-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
         {/* Next Button (Only Forward) */}
         <div className="flex justify-end flex-1">
-          <button 
-            onClick={goToNext}
-            className="p-3 text-white transition-all duration-200 rounded-full shadow-lg bg-white/20 backdrop-blur-sm hover:bg-white/30 hover:scale-110"
-            aria-label="Next image"
-          >
+          <button onClick={goToNext} className="p-3 text-white transition-all duration-200 rounded-full shadow-lg bg-white/20 backdrop-blur-sm hover:bg-white/30 hover:scale-110" aria-label="Next image">
             <ChevronRight className="w-6 h-6" />
           </button>
         </div>
@@ -105,13 +92,10 @@ export default function ImageCarousel({ images = [], autoSlideInterval = 4000 })
             <span className="px-3 py-1 text-sm font-medium text-white rounded-full bg-black/30 backdrop-blur-sm">
               {currentIndex + 1} / {images.length}
             </span>
-            
+
             {/* Play/Pause Button */}
             {images.length > 1 && (
-              <button
-                onClick={togglePlayPause}
-                className="flex items-center px-3 py-1 space-x-2 text-sm text-white transition-colors rounded-full bg-black/30 backdrop-blur-sm hover:bg-black/40"
-              >
+              <button onClick={togglePlayPause} className="flex items-center px-3 py-1 space-x-2 text-sm text-white transition-colors rounded-full bg-black/30 backdrop-blur-sm hover:bg-black/40">
                 {isPlaying ? (
                   <>
                     <Pause className="w-4 h-4" />
@@ -130,17 +114,7 @@ export default function ImageCarousel({ images = [], autoSlideInterval = 4000 })
           {/* Dot Indicators */}
           <div className="flex space-x-2">
             {images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={cn(
-                  "w-3 h-3 rounded-full transition-all duration-300 hover:scale-125",
-                  currentIndex === index 
-                    ? 'bg-white shadow-lg' 
-                    : 'bg-white/40 hover:bg-white/60'
-                )}
-                aria-label={`Go to image ${index + 1}`}
-              />
+              <button key={index} onClick={() => goToSlide(index)} className={cn("w-3 h-3 rounded-full transition-all duration-300 hover:scale-125", currentIndex === index ? "bg-white shadow-lg" : "bg-white/40 hover:bg-white/60")} aria-label={`Go to image ${index + 1}`} />
             ))}
           </div>
         </div>
@@ -160,8 +134,12 @@ export default function ImageCarousel({ images = [], autoSlideInterval = 4000 })
 
       <style jsx>{`
         @keyframes progress {
-          from { width: 0%; }
-          to { width: 100%; }
+          from {
+            width: 0%;
+          }
+          to {
+            width: 100%;
+          }
         }
       `}</style>
     </div>

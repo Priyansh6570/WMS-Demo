@@ -2,7 +2,26 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { dataManager } from '@/lib/data-manager';
-import { Search, Filter, X, Calendar, IndianRupee, User, MapPin, Clock, AlertTriangle, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { 
+  Search, 
+  Filter, 
+  X, 
+  Calendar, 
+  IndianRupee, 
+  User, 
+  MapPin, 
+  Clock, 
+  AlertTriangle, 
+  TrendingUp, 
+  CheckCircle2,
+  PlusCircle,
+  RefreshCw,
+  Download,
+  FolderOpen,
+  Activity,
+  Target,
+  Users
+} from 'lucide-react';
 import { formatDate, formatCurrency } from '@/lib/utils';
 import Link from 'next/link';
 
@@ -33,7 +52,7 @@ const getStatusConfig = (status) => {
     case 'completed':
       return { 
         icon: CheckCircle2, 
-        color: 'bg-gray-100 text-gray-700 border-gray-200',
+        color: 'bg-purple-100 text-purple-700 border-purple-200',
         label: 'Completed'
       };
     case 'paused':
@@ -51,6 +70,45 @@ const getStatusConfig = (status) => {
   }
 };
 
+// Stats Card Component
+const StatsCard = ({ icon: Icon, title, value, subtitle, color }) => {
+  const colorClasses = {
+    blue: 'from-blue-500 to-blue-600',
+    green: 'from-green-500 to-green-600',
+    yellow: 'from-yellow-500 to-yellow-600',
+    red: 'from-red-500 to-red-600',
+    purple: 'from-purple-500 to-purple-600',
+  };
+
+  return (
+    <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+      <div className="flex items-center space-x-4">
+        <div className={`p-3 rounded-lg bg-gradient-to-r ${colorClasses[color]} shadow-md`}>
+          <Icon className="w-6 h-6 text-white" />
+        </div>
+        <div className="flex-1">
+          <p className="text-2xl font-bold text-gray-900">{value}</p>
+          <p className="text-sm font-semibold text-gray-700">{title}</p>
+          <p className="text-xs text-gray-500">{subtitle}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Section Header Component
+const SectionHeader = ({ icon: Icon, title, description }) => (
+  <div className="flex items-center space-x-4 mb-6">
+    <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl shadow-lg">
+      <Icon className="w-6 h-6 text-white" />
+    </div>
+    <div>
+      <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  </div>
+);
+
 export default function ProjectsListingPage() {
   const { user } = useAuth();
   const [projects, setProjects] = useState([]);
@@ -61,54 +119,46 @@ export default function ProjectsListingPage() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [priorityFilter, setPriorityFilter] = useState('all');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const [projectsData, monumentsData] = await Promise.all([
-          dataManager.getProjects(),
-          dataManager.getMonuments()
-        ]);
-        
-        // Filter projects based on user role
-        let filteredProjects = projectsData;
-        
-        if (user?.role === 'contractor') {
-          // Show only projects assigned to this contractor
-          filteredProjects = projectsData.filter(project => 
-            project.contractorId === user.id
-          );
-        } else if (user?.role === 'worker') {
-          // Show only projects where this worker is assigned
-          filteredProjects = projectsData.filter(project => 
-            project.workers && project.workers.some(worker => worker.id === user.id)
-          );
-        }
-        // For super_admin, admin, quality_manager, financial_officer - show all projects
-        
-        // Sort by latest first
-        filteredProjects.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        
-        setProjects(filteredProjects);
-        setMonuments(monumentsData);
-      } catch (err) {
-        setError('Failed to load projects.');
-        console.error(err);
-      } finally {
-        setLoading(false);
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      setError('');
+      const [projectsData, monumentsData] = await Promise.all([
+        dataManager.getProjects(),
+        dataManager.getMonuments()
+      ]);
+      let filteredProjects = projectsData;
+      
+      if (user?.role === 'contractor') {
+        filteredProjects = projectsData.filter(project => 
+          project.contractorId === user.id
+        );
+      } else if (user?.role === 'worker') {
+        filteredProjects = projectsData.filter(project => 
+          project.workers && project.workers.some(worker => worker.id === user.id)
+        );
       }
-    };
+      filteredProjects.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      
+      setProjects(filteredProjects);
+      setMonuments(monumentsData);
+    } catch (err) {
+      setError('Failed to load projects. Please try again.');
+      console.error('Projects fetch error:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     if (user) {
       fetchData();
     }
   }, [user]);
 
-  // Filter and search projects
   const filteredProjects = useMemo(() => {
     let filtered = projects;
 
-    // Apply search filter
     if (searchTerm.trim()) {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(project => 
@@ -118,13 +168,10 @@ export default function ProjectsListingPage() {
         monuments.find(m => m.id === project.monumentId)?.name.toLowerCase().includes(term)
       );
     }
-
-    // Apply status filter
     if (statusFilter !== 'all') {
       filtered = filtered.filter(project => project.status === statusFilter);
     }
 
-    // Apply priority filter
     if (priorityFilter !== 'all') {
       filtered = filtered.filter(project => project.priority === priorityFilter);
     }
@@ -132,19 +179,50 @@ export default function ProjectsListingPage() {
     return filtered;
   }, [projects, monuments, searchTerm, statusFilter, priorityFilter]);
 
+  // Calculate project statistics
+  const projectStats = useMemo(() => {
+    const statusCount = projects.reduce((acc, project) => {
+      acc[project.status] = (acc[project.status] || 0) + 1;
+      return acc;
+    }, {});
+
+    const priorityCount = projects.reduce((acc, project) => {
+      const priority = project.priority || 'medium';
+      acc[priority] = (acc[priority] || 0) + 1;
+      return acc;
+    }, {});
+
+    return {
+      total: projects.length,
+      active: statusCount.active || 0,
+      scheduled: statusCount.scheduled || 0,
+      completed: statusCount.completed || 0,
+      paused: statusCount.paused || 0,
+      urgent: priorityCount.urgent || 0,
+      high: priorityCount.high || 0,
+    };
+  }, [projects]);
+
   const clearFilters = () => {
     setSearchTerm('');
     setStatusFilter('all');
     setPriorityFilter('all');
   };
 
+  const canCreateProject = user?.role === 'super_admin' || user?.role === 'admin';
+
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="text-center">
-            <div className="w-12 h-12 mx-auto mb-4 border-4 border-blue-600 rounded-full border-t-transparent animate-spin"></div>
-            <p className="text-xl font-medium text-gray-700">Loading projects...</p>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-200 rounded mb-6 w-1/3"></div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="h-32 bg-gray-200 rounded-xl"></div>
+              ))}
+            </div>
+            <div className="h-96 bg-gray-200 rounded-2xl"></div>
           </div>
         </div>
       </div>
@@ -153,14 +231,24 @@ export default function ProjectsListingPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-red-50">
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="max-w-md p-8 mx-auto text-center bg-white shadow-lg rounded-xl">
-            <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full">
-              <AlertTriangle className="w-8 h-8 text-red-600" />
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-red-50">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="bg-red-50 border border-red-200 rounded-2xl p-6">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                <AlertTriangle className="w-5 h-5 text-red-600" />
+              </div>
+              <div>
+                <h3 className="text-red-800 font-semibold">Error Loading Projects</h3>
+                <p className="text-red-600">{error}</p>
+                <button 
+                  onClick={fetchData}
+                  className="mt-2 text-red-700 hover:text-red-900 font-medium text-sm"
+                >
+                  Try again
+                </button>
+              </div>
             </div>
-            <h3 className="mb-2 text-lg font-semibold text-gray-900">Error Loading Projects</h3>
-            <p className="mb-4 text-red-600">{error}</p>
           </div>
         </div>
       </div>
@@ -168,40 +256,108 @@ export default function ProjectsListingPage() {
   }
 
   return (
-    <div className="min-h-screen text-gray-700 bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="px-6 py-8 mx-auto max-w-7xl">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="mb-2 text-3xl font-bold text-gray-900">Projects</h1>
-          <p className="text-gray-600">
-            {user?.role === 'contractor' 
-              ? `Manage projects assigned to you (${projects.length} total)`
-              : user?.role === 'worker'
-                ? `View projects you're working on (${projects.length} total)`
-                : `Manage all projects across monuments (${projects.length} total)`
-            }
-          </p>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 text-gray-700">
+      {/* Header */}
+      <div className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Project Management</h1>
+              <p className="text-gray-600 mt-1">
+                {user?.role === 'contractor' 
+                  ? `Monitor and manage your assigned heritage projects (${projects.length} total)`
+                  : user?.role === 'worker'
+                    ? `Track progress on projects you're working on (${projects.length} total)`
+                    : `Oversee all heritage conservation projects across monuments (${projects.length} total)`
+                }
+              </p>
+            </div>
+            <div className="flex items-center space-x-3">
+              <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center space-x-2">
+                <Download className="w-4 h-4" />
+                <span>Export Projects</span>
+              </button>
+              <button 
+                onClick={fetchData}
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center space-x-2"
+              >
+                <RefreshCw className="w-4 h-4" />
+                <span>Refresh</span>
+              </button>
+              {canCreateProject && (
+                <Link href="/WMS/projects/create">
+                  <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center space-x-2">
+                    <PlusCircle className="w-4 h-4" />
+                    <span>New Project</span>
+                  </button>
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Statistics Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <StatsCard
+            icon={FolderOpen}
+            title="Total Projects"
+            value={projectStats.total}
+            subtitle="All registered projects"
+            color="blue"
+          />
+          <StatsCard
+            icon={Activity}
+            title="Active Projects"
+            value={projectStats.active}
+            subtitle="Currently in progress"
+            color="green"
+          />
+          <StatsCard
+            icon={Target}
+            title="High Priority"
+            value={projectStats.urgent + projectStats.high}
+            subtitle="Urgent & high"
+            color="red"
+          />
+          <StatsCard
+            icon={CheckCircle2}
+            title="Completed"
+            value={projectStats.completed}
+            subtitle="Successfully finished"
+            color="purple"
+          />
         </div>
 
-        {/* Search and Filters */}
-        <div className="p-6 mb-8 bg-white border border-gray-200 shadow-sm rounded-xl">
-          <div className="flex flex-col gap-4 lg:flex-row">
+        {/* Filters Section */}
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mb-8">
+          <div className="flex items-center space-x-4 mb-4">
+            <div className="p-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow-md">
+              <Filter className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900">Filter & Search</h2>
+              <p className="text-sm text-gray-600">Find projects by name, monument, contractor, or status</p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {/* Search Input */}
-            <div className="relative flex-1">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <Search className="w-5 h-5 text-gray-400" />
-              </div>
+            <div className="relative md:col-span-2">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search projects, monuments, contractors..."
+                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="block w-full py-3 pl-10 pr-10 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute inset-y-0 right-0 flex items-center pr-3"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2"
                 >
                   <X className="w-5 h-5 text-gray-400 hover:text-gray-600" />
                 </button>
@@ -209,29 +365,26 @@ export default function ProjectsListingPage() {
             </div>
 
             {/* Status Filter */}
-            <div className="lg:w-48">
-              <div className="relative">
-                <Filter className="absolute w-4 h-4 text-gray-400 transform -translate-y-1/2 left-3 top-1/2" />
-                <select
-                  value={statusFilter}
-                  onChange={(e) => setStatusFilter(e.target.value)}
-                  className="block w-full py-3 pl-10 pr-4 text-base bg-white border border-gray-300 rounded-lg appearance-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="all">All Statuses</option>
-                  <option value="scheduled">Scheduled</option>
-                  <option value="active">Active</option>
-                  <option value="paused">Paused</option>
-                  <option value="completed">Completed</option>
-                </select>
-              </div>
+            <div className="relative">
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white appearance-none"
+              >
+                <option value="all">All Statuses</option>
+                <option value="scheduled">Scheduled</option>
+                <option value="active">Active</option>
+                <option value="paused">Paused</option>
+                <option value="completed">Completed</option>
+              </select>
             </div>
 
             {/* Priority Filter */}
-            <div className="lg:w-48">
+            <div className="relative">
               <select
                 value={priorityFilter}
                 onChange={(e) => setPriorityFilter(e.target.value)}
-                className="block w-full px-4 py-3 text-base bg-white border border-gray-300 rounded-lg appearance-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white appearance-none"
               >
                 <option value="all">All Priorities</option>
                 <option value="urgent">Urgent</option>
@@ -240,159 +393,188 @@ export default function ProjectsListingPage() {
                 <option value="low">Low</option>
               </select>
             </div>
+          </div>
 
-            {/* Clear Filters */}
+          {/* Filter Actions */}
+          <div className="flex items-center justify-between mt-4">
             {(searchTerm || statusFilter !== 'all' || priorityFilter !== 'all') && (
               <button
                 onClick={clearFilters}
-                className="px-6 py-3 text-gray-600 transition-colors border border-gray-300 rounded-lg hover:text-gray-800 hover:bg-gray-50 whitespace-nowrap"
+                className="px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
               >
                 Clear Filters
               </button>
             )}
-          </div>
-
-          {/* Results Count */}
-          {(searchTerm || statusFilter !== 'all' || priorityFilter !== 'all') && (
-            <div className="mt-4 text-sm text-gray-600">
+            <div className="text-sm text-gray-600 ml-auto">
               Showing {filteredProjects.length} of {projects.length} projects
             </div>
-          )}
+          </div>
         </div>
 
-        {/* Projects Grid */}
-        {filteredProjects.length > 0 ? (
-          <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-            {filteredProjects.map(project => {
-              const monument = monuments.find(m => m.id === project.monumentId);
-              const statusConfig = getStatusConfig(project.status);
-              const StatusIcon = statusConfig.icon;
+        {/* Projects Section */}
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+          <div className="p-6 border-b border-gray-200">
+            <SectionHeader 
+              icon={FolderOpen} 
+              title="Projects Directory" 
+              description="Complete overview of all heritage conservation projects"
+            />
+          </div>
+          
+          {filteredProjects.length > 0 ? (
+            <div className="p-6">
+              <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+                {filteredProjects.map(project => {
+                  const monument = monuments.find(m => m.id === project.monumentId);
+                  const statusConfig = getStatusConfig(project.status);
+                  const StatusIcon = statusConfig.icon;
 
-              return (
-                <Link 
-                  key={project.id} 
-                  href={`/WMS/projects/${project.id}`}
-                  className="block transition-transform duration-200 hover:scale-[1.02]"
-                >
-                  <div className="h-full transition-shadow duration-200 bg-white border border-gray-200 shadow-sm rounded-xl hover:shadow-md">
-                    {/* Project Header */}
-                    <div className="p-6 border-b border-gray-100">
-                      <div className="flex items-start justify-between mb-3">
-                        <div className="flex-1 min-w-0">
-                          <h3 className="mb-1 text-lg font-semibold text-gray-900 truncate">
-                            {project.name}
-                          </h3>
-                          <p className="flex items-center text-sm text-gray-600">
-                            <MapPin className="flex-shrink-0 w-4 h-4 mr-1" />
-                            {monument?.name || 'Unknown Monument'}
+                  return (
+                    <Link 
+                      key={project.id} 
+                      href={`/WMS/projects/${project.id}`}
+                      className="block group"
+                    >
+                      <div className="h-full bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                        {/* Project Header */}
+                        <div className="p-6 border-b border-gray-100">
+                          <div className="flex items-start justify-between mb-3">
+                            <div className="flex-1 min-w-0">
+                              <h3 className="text-lg font-bold text-gray-900 mb-1 truncate group-hover:text-blue-600 transition-colors">
+                                {project.name}
+                              </h3>
+                              <p className="flex items-center text-sm text-gray-600">
+                                <MapPin className="flex-shrink-0 w-4 h-4 mr-1.5" />
+                                {monument?.name || 'Unknown Monument'}
+                              </p>
+                            </div>
+                            <div className="flex flex-col items-end flex-shrink-0 ml-4 space-y-2">
+                              <span className={`px-3 py-1 text-xs font-semibold rounded-full border flex items-center ${statusConfig.color}`}>
+                                <StatusIcon className="w-3 h-3 mr-1.5" />
+                                {statusConfig.label}
+                              </span>
+                              <span className={`px-3 py-1 text-xs font-semibold rounded-full border ${getPriorityColor(project.priority)}`}>
+                                {project.priority ? project.priority.charAt(0).toUpperCase() + project.priority.slice(1) : 'Medium'}
+                              </span>
+                            </div>
+                          </div>
+                          
+                          <p className="text-sm text-gray-600 line-clamp-2 mb-3">
+                            {project.description || 'No description available'}
                           </p>
                         </div>
-                        <div className="flex flex-col items-end flex-shrink-0 ml-4 space-y-2">
-                          <span className={`px-2 py-1 text-xs font-medium rounded-full border flex items-center ${statusConfig.color}`}>
-                            <StatusIcon className="w-3 h-3 mr-1" />
-                            {statusConfig.label}
-                          </span>
-                          <span className={`px-2 py-1 text-xs font-medium rounded-full border ${getPriorityColor(project.priority)}`}>
-                            {project.priority ? project.priority.charAt(0).toUpperCase() + project.priority.slice(1) : 'Medium'}
-                          </span>
+
+                        {/* Project Details */}
+                        <div className="p-6 space-y-4">
+                          {/* Budget */}
+                          {project.budget && (
+                            <div className="flex items-center text-sm">
+                              <div className="p-2 bg-green-100 rounded-lg mr-3">
+                                <IndianRupee className="w-4 h-4 text-green-600" />
+                              </div>
+                              <div>
+                                <span className="text-gray-500 text-xs block">Budget</span>
+                                <span className="font-semibold text-gray-900">
+                                  {formatCurrency(project.budget)}
+                                </span>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Timeline */}
+                          {project.timeline?.start && (
+                            <div className="flex items-center text-sm">
+                              <div className="p-2 bg-blue-100 rounded-lg mr-3">
+                                <Calendar className="w-4 h-4 text-blue-600" />
+                              </div>
+                              <div>
+                                <span className="text-gray-500 text-xs block">Timeline</span>
+                                <span className="font-semibold text-gray-900">
+                                  {formatDate(project.timeline.start)}
+                                  {project.timeline.end && ` - ${formatDate(project.timeline.end)}`}
+                                </span>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Contractor */}
+                          {project.contractorName && (
+                            <div className="flex items-center text-sm">
+                              <div className="p-2 bg-purple-100 rounded-lg mr-3">
+                                <User className="w-4 h-4 text-purple-600" />
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <span className="text-gray-500 text-xs block">Contractor</span>
+                                <span className="font-semibold text-gray-900 truncate block">
+                                  {project.contractorName}
+                                </span>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Progress (for active projects) */}
+                          {project.status === 'active' && typeof project.progress === 'number' && (
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between text-sm">
+                                <span className="text-gray-500">Progress</span>
+                                <span className="font-semibold text-gray-900">{project.progress}%</span>
+                              </div>
+                              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div 
+                                  className="h-full transition-all duration-500 bg-gradient-to-r from-green-500 to-green-600 rounded-full"
+                                  style={{ width: `${project.progress}%` }}
+                                ></div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Footer */}
+                        <div className="px-6 py-4 border-t border-gray-100 bg-gray-50">
+                          <div className="flex items-center justify-between text-xs text-gray-500">
+                            <div className="flex items-center space-x-1">
+                              <Calendar className="w-3 h-3" />
+                              <span>Created {formatDate(project.createdAt)}</span>
+                            </div>
+                            <span className="font-mono">ID: {project.id.slice(-8).toUpperCase()}</span>
+                          </div>
                         </div>
                       </div>
-                      
-                      <p className="text-sm text-gray-600 line-clamp-2">
-                        {project.description || 'No description available'}
-                      </p>
-                    </div>
-
-                    {/* Project Details */}
-                    <div className="p-6 space-y-3">
-                      {/* Budget */}
-                      {project.budget && (
-                        <div className="flex items-center text-sm">
-                          <IndianRupee className="w-4 h-4 mr-2 text-green-600" />
-                          <span className="text-gray-500">Budget:</span>
-                          <span className="ml-1 font-medium text-gray-900">
-                            {formatCurrency(project.budget)}
-                          </span>
-                        </div>
-                      )}
-
-                      {/* Timeline */}
-                      {project.timeline?.start && (
-                        <div className="flex items-center text-sm">
-                          <Calendar className="w-4 h-4 mr-2 text-blue-600" />
-                          <span className="text-gray-500">Timeline:</span>
-                          <span className="ml-1 font-medium text-gray-900">
-                            {formatDate(project.timeline.start)}
-                            {project.timeline.end && ` - ${formatDate(project.timeline.end)}`}
-                          </span>
-                        </div>
-                      )}
-
-                      {/* Contractor */}
-                      {project.contractorName && (
-                        <div className="flex items-center text-sm">
-                          <User className="w-4 h-4 mr-2 text-purple-600" />
-                          <span className="text-gray-500">Contractor:</span>
-                          <span className="ml-1 font-medium text-gray-900 truncate">
-                            {project.contractorName}
-                          </span>
-                        </div>
-                      )}
-
-                      {/* Progress (for active projects) */}
-                      {project.status === 'active' && typeof project.progress === 'number' && (
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-500">Progress:</span>
-                            <span className="font-medium text-gray-900">{project.progress}%</span>
-                          </div>
-                          <div className="w-full h-2 bg-gray-200 rounded-full">
-                            <div 
-                              className="h-2 transition-all duration-300 bg-green-500 rounded-full"
-                              style={{ width: `${project.progress}%` }}
-                            ></div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Footer */}
-                    <div className="px-6 py-3 border-t border-gray-100 bg-gray-50 rounded-b-xl">
-                      <div className="flex items-center justify-between text-xs text-gray-500">
-                        <span>Created {formatDate(project.createdAt)}</span>
-                        <span>ID: {project.id.slice(-8).toUpperCase()}</span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        ) : (
-          <div className="py-16 text-center bg-white border-2 border-gray-200 border-dashed rounded-xl">
-            <div className="max-w-md mx-auto">
-              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-gray-200 rounded-full">
-                <TrendingUp className="w-8 h-8 text-gray-400" />
+                    </Link>
+                  );
+                })}
               </div>
-              <h3 className="mb-2 text-lg font-medium text-gray-900">
+            </div>
+          ) : (
+            <div className="p-12 text-center">
+              <FolderOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 {searchTerm || statusFilter !== 'all' || priorityFilter !== 'all'
                   ? 'No Projects Found'
                   : 'No Projects Yet'
                 }
               </h3>
-              <p className="text-gray-500">
+              <p className="text-gray-600 mb-6">
                 {searchTerm || statusFilter !== 'all' || priorityFilter !== 'all'
-                  ? 'Try adjusting your search criteria or filters.'
+                  ? 'No projects match your current filters. Try adjusting your search criteria.'
                   : user?.role === 'contractor'
-                    ? 'Projects assigned to you will appear here.'
+                    ? 'Projects assigned to you will appear here once available.'
                     : user?.role === 'worker' 
-                      ? 'Projects you\'re assigned to will appear here.'
-                      : 'Create new projects to get started with monument management.'
+                      ? 'Projects you\'re assigned to will appear here when available.'
+                      : 'Get started by creating your first heritage conservation project.'
                 }
               </p>
+              {!searchTerm && !statusFilter !== 'all' && !priorityFilter !== 'all' && canCreateProject && (
+                <Link href="/WMS/projects/create">
+                  <button className="px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center space-x-2 mx-auto">
+                    <PlusCircle className="w-4 h-4" />
+                    <span>Create First Project</span>
+                  </button>
+                </Link>
+              )}
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
